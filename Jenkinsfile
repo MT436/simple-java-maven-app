@@ -22,6 +22,11 @@ pipeline {
                 }
             }
         }
+        stage('Deploy') {
+            steps {
+            deploy adapters: [tomcat9(credentialsId: 'tomcat1', path: '', url: 'http://65.0.251.201:8081')], contextPath: null, war: '**/*.war'
+            }
+        }
       
      }
 }
